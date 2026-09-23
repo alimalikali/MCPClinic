@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-clinic.local/schemas/trace-bundle-1.0.json",
+  "title": "MCP Clinic trace bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "runId", "events"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "runId": { "type": "string", "minLength": 1 },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/event" }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "runId", "eventId", "sequence", "sourceId", "actor", "stage", "kind", "timestamp", "facts", "redactionVersion", "provenance"],
+      "properties": {
+        "schemaVersion": { "const": "1.0" },
+        "runId": { "type": "string", "minLength": 1 },
+        "eventId": { "type": "string", "minLength": 1 },
+        "sequence": { "type": "integer", "minimum": 0 },
+        "requestId": { "type": "string", "minLength": 1 },
+        "attemptId": { "type": "string" },
+        "parentEventId": { "type": "string" },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "sourceSequence": { "type": "integer", "minimum": 0 },
+        "actor": { "enum": ["clinic_client", "proxy_ingress", "server_ingress", "identity_provider"] },
+        "stage": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["request", "response", "validation", "gap", "policy_block"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "monotonicOffsetMs": { "type": "number", "minimum": 0 },
+        "method": { "type": "string" },
+        "urlSafe": { "type": "string" },
+        "statusCode": { "type": "integer", "minimum": 100, "maximum": 599 },
+        "authorization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["observed", "not_observed", "not_applicable"] },
+            "present": { "type": "boolean" },
+            "scheme": { "enum": ["Bearer", "other"] },
+            "tokenFingerprint": { "type": "string" }
+          }
+        },
+        "facts": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean", "null"] } },
+        "redactionVersion": { "type": "string", "minLength": 1 },
+        "provenance": { "enum": ["live_probe", "local_observer", "import", "fixture"] }
+      }
+    }
+  }
+}

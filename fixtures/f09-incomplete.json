@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "run-f09-incomplete",
+  "events": [
+    {"schemaVersion":"1.0","runId":"run-f09-incomplete","eventId":"client-1","sequence":1,"requestId":"r17","sourceId":"worker","sourceSequence":1,"actor":"clinic_client","stage":"mcp_request","kind":"request","timestamp":"2026-09-23T12:00:00.000Z","authorization":{"status":"observed","present":true,"scheme":"Bearer"},"facts":{"protocolProfile":"2026-07-28"},"redactionVersion":"1.0","provenance":"fixture"},
+    {"schemaVersion":"1.0","runId":"run-f09-incomplete","eventId":"server-1","sequence":2,"requestId":"r17","sourceId":"express","sourceSequence":1,"actor":"server_ingress","stage":"mcp_request","kind":"request","timestamp":"2026-09-23T12:00:00.020Z","authorization":{"status":"observed","present":false},"facts":{"route":"/mcp"},"redactionVersion":"1.0","provenance":"fixture"}
+  ]
+}
