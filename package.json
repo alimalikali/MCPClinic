@@ -1,0 +1,11 @@
+{
+  "name": "mcp-clinic",
+  "private": true,
+  "packageManager": "pnpm@10.28.1",
+  "scripts": {
+    "clinic": "node apps/cli/src/index.ts",
+    "test": "node --test packages/diagnostics/test/*.test.ts",
+    "check": "node --run test"
+  },
+  "engines": { "node": ">=24" }
+}

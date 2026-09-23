@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "checkedAt": "2026-09-23T15:19:17Z",
+  "status": "blocked",
+  "targetProtocolProfile": "2026-07-28",
+  "environment": {
+    "node": "24.15.0",
+    "pnpm": "10.28.1",
+    "uv": "0.7.22",
+    "docker": null
+  },
+  "artifacts": {
+    "typescriptSdk": { "version": null, "integrity": null, "status": "unresolved" },
+    "conformance": { "commit": null, "status": "unresolved" },
+    "keycloak": { "version": null, "imageDigest": null, "status": "unresolved" },
+    "nginx": { "version": null, "imageDigest": null, "status": "unresolved" },
+    "postgresql": { "version": null, "imageDigest": null, "status": "unresolved" }
+  },
+  "sources": [
+    { "id": "S3", "url": "https://ts.sdk.modelcontextprotocol.io/v2/", "status": "network_blocked" },
+    { "id": "S4", "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports", "status": "network_blocked" },
+    { "id": "S7", "url": "https://github.com/modelcontextprotocol/conformance", "status": "network_blocked" },
+    { "id": "S8", "url": "https://www.keycloak.org/securing-apps/mcp-authz-server", "status": "network_blocked" },
+    { "id": "S14", "url": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html", "status": "network_blocked" }
+  ],
+  "blockers": [
+    "Official documentation and package registries return HTTP 403 through the environment proxy.",
+    "Docker and Docker Compose are not installed in the development environment."
+  ]
+}
+
